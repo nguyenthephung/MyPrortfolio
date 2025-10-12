@@ -137,19 +137,6 @@ export default function HomePage() {
                 <span className="text-blue-400 font-semibold"> awesome web apps 🌐</span>.
                 Let's create something amazing together! ✨
               </p>
-              
-              {/* CTA Buttons - More playful */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button size="lg" className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300">
-                  <span className="mr-2">🎨</span>
-                  Check Out My Work
-                  <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-                <Button variant="outline" size="lg" className="border-2 border-purple-500/50 text-gray-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300">
-                  <span className="mr-2">📄</span>
-                  Download CV
-                </Button>
-              </div>
 
               {/* Social Links - Fun colors */}
               <div className="flex justify-center lg:justify-start space-x-3 flex-wrap gap-y-3">
@@ -157,6 +144,7 @@ export default function HomePage() {
                 <a
                   href="https://github.com/nguyenthephung"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-gray-700/50 transition-all duration-200 hover:scale-110">
@@ -166,8 +154,9 @@ export default function HomePage() {
 
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/in/nguyenthephung"
+                  href="https://www.linkedin.com/in/ph%E1%BB%A5ng-nguy%E1%BB%85n-th%E1%BB%83-285107385/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-900/50 hover:shadow-xl hover:shadow-blue-500/50 transition-all duration-200 hover:scale-110">
@@ -177,8 +166,9 @@ export default function HomePage() {
 
                 {/* Facebook */}
                 <a
-                  href="#"
+                  href="https://www.facebook.com/nguyenthe.phung.961"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-900/50 hover:shadow-xl hover:shadow-blue-400/50 transition-all duration-200 hover:scale-110">
@@ -190,6 +180,7 @@ export default function HomePage() {
                 <a
                   href="#"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-900/50 hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-200 hover:scale-110">
@@ -319,7 +310,7 @@ export default function HomePage() {
                     </div>
                     <div className="text-pink-400 font-medium text-sm md:text-right">
                       📅 2022 - 2026
-                      <div className="text-gray-500 text-xs mt-1">🎯 GPA: 3.5+/4.0</div>
+                      <div className="text-gray-500 text-xs mt-1">🎯 GPA: 3.1/4.0</div>
                     </div>
                   </div>
                 </CardHeader>
@@ -375,22 +366,14 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm overflow-hidden">
-                <div className="w-full h-48 bg-gradient-to-br from-green-600/20 to-blue-600/20 relative overflow-hidden">
-                  <div className="absolute inset-4 bg-gray-800/90 rounded-lg shadow-lg border border-gray-700">
-                    <div className="p-2 border-b border-gray-700">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="p-3 space-y-2">
-                      <div className="h-2 bg-green-500/50 rounded w-3/4"></div>
-                      <div className="h-2 bg-gray-600 rounded w-1/2"></div>
-                      <div className="h-2 bg-blue-500/50 rounded w-2/3"></div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-blue-400/10 group-hover:from-green-400/20 group-hover:to-blue-400/20 transition-all duration-300"></div>
+                <div className="w-full h-48 relative overflow-hidden">
+                  <Image 
+                    src="/images/GreenMart_Project.png" 
+                    alt="GreenMart E-commerce Project"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
                 </div>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between text-gray-100 group-hover:text-green-400 transition-colors">
@@ -414,11 +397,20 @@ export default function HomePage() {
                     ))}
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" variant="outline" className="flex-1 border-gray-700 text-gray-300 hover:border-green-500 hover:text-green-400 hover:bg-green-500/10 transition-colors">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 border-gray-700 text-gray-300 hover:border-green-500 hover:text-green-400 hover:bg-green-500/10 transition-colors"
+                      onClick={() => window.open('https://github.com/nguyenthephung/Green-Mart', '_blank')}
+                    >
                       <Github className="h-4 w-4 mr-2" />
                       GitHub
                     </Button>
-                    <Button size="sm" className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300">
+                    <Button 
+                      size="sm" 
+                      className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300"
+                      onClick={() => window.open('https://greenmart-web-4385e.web.app/home', '_blank')}
+                    >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Live Demo
                     </Button>
@@ -435,22 +427,14 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm overflow-hidden">
-                <div className="w-full h-48 bg-gradient-to-br from-red-600/20 to-purple-600/20 relative overflow-hidden">
-                  <div className="absolute inset-4 bg-gray-800/90 rounded-lg shadow-lg border border-gray-700">
-                    <div className="p-2 border-b border-gray-700">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="p-3 space-y-2">
-                      <div className="h-2 bg-red-500/50 rounded w-3/4"></div>
-                      <div className="h-2 bg-gray-600 rounded w-1/2"></div>
-                      <div className="h-2 bg-purple-500/50 rounded w-2/3"></div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-400/10 to-purple-400/10 group-hover:from-red-400/20 group-hover:to-purple-400/20 transition-all duration-300"></div>
+                <div className="w-full h-48 relative overflow-hidden">
+                  <Image 
+                    src="/images/TubeAnalytics_Project.png" 
+                    alt="TubeAnalytics AI Emotion Detection Project"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
                 </div>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between text-gray-100 group-hover:text-purple-400 transition-colors">
@@ -474,11 +458,20 @@ export default function HomePage() {
                     ))}
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" variant="outline" className="flex-1 border-gray-700 text-gray-300 hover:border-purple-500 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 border-gray-700 text-gray-300 hover:border-purple-500 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"
+                      onClick={() => window.open('https://github.com/nguyenthephung/TubeAnalytics', '_blank')}
+                    >
                       <Github className="h-4 w-4 mr-2" />
                       GitHub
                     </Button>
-                    <Button size="sm" className="flex-1 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 shadow-md hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300">
+                    <Button 
+                      size="sm" 
+                      className="flex-1 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 shadow-md hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
+                      onClick={() => window.open('https://tube-analytics-w5pb.vercel.app/', '_blank')}
+                    >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Live Demo
                     </Button>
@@ -495,22 +488,14 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm overflow-hidden">
-                <div className="w-full h-48 bg-gradient-to-br from-orange-600/20 to-yellow-600/20 relative overflow-hidden">
-                  <div className="absolute inset-4 bg-gray-800/90 rounded-lg shadow-lg border border-gray-700">
-                    <div className="p-2 border-b border-gray-700">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="p-3 space-y-2">
-                      <div className="h-2 bg-orange-500/50 rounded w-3/4"></div>
-                      <div className="h-2 bg-gray-600 rounded w-1/2"></div>
-                      <div className="h-2 bg-yellow-500/50 rounded w-2/3"></div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-yellow-400/10 group-hover:from-orange-400/20 group-hover:to-yellow-400/20 transition-all duration-300"></div>
+                <div className="w-full h-48 relative overflow-hidden">
+                  <Image 
+                    src="/images/ExpenseTrackerAPI_Project.png" 
+                    alt="Expense Tracker API Project"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
                 </div>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between text-gray-100 group-hover:text-orange-400 transition-colors">
@@ -534,13 +519,67 @@ export default function HomePage() {
                     ))}
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" variant="outline" className="flex-1 border-gray-700 text-gray-300 hover:border-orange-500 hover:text-orange-400 hover:bg-orange-500/10 transition-colors">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="w-full border-gray-700 text-gray-300 hover:border-orange-500 hover:text-orange-400 hover:bg-orange-500/10 transition-colors"
+                      onClick={() => window.open('https://github.com/nguyenthephung/ExpenseTrackerAPI', '_blank')}
+                    >
                       <Github className="h-4 w-4 mr-2" />
-                      GitHub
+                      View on GitHub
                     </Button>
-                    <Button size="sm" className="flex-1 bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-700 hover:to-yellow-700 shadow-md hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      API Docs
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Mario Game Project - NEW */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 3 * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="group hover:shadow-2xl hover:shadow-red-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm overflow-hidden">
+                <div className="w-full h-48 relative overflow-hidden">
+                  <Image 
+                    src="/images/MarioGame_Project.jpg" 
+                    alt="Mario Bros Game Project"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="flex items-center justify-between text-gray-100 group-hover:text-red-400 transition-colors">
+                    🎮 Mario Bros Game (C++ & SFML)
+                    <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" />
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed text-gray-400">
+                    A custom Mario Bros-style platformer built with C++ and SFML! Features classic 2D platforming, 
+                    camera tracking, collision detection, enemy interactions, and retro gameplay. 🍄
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {["C++17", "SFML 2.5+", "Visual Studio", "Game Dev", "2D Graphics"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-gradient-to-r from-red-600/20 to-yellow-600/20 text-red-300 rounded text-xs font-medium border border-red-500/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex space-x-2">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="w-full border-gray-700 text-gray-300 hover:border-red-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                      onClick={() => window.open('https://github.com/trngnneee/MarioGame', '_blank')}
+                    >
+                      <Github className="h-4 w-4 mr-2" />
+                      View on GitHub
                     </Button>
                   </div>
                 </CardContent>
@@ -688,30 +727,18 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="w-full h-80 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-3xl mb-6 relative overflow-hidden border border-gray-800">
-                {/* Fun code window */}
-                <div className="absolute top-4 left-4 right-4 h-10 bg-gray-800 rounded-xl flex items-center px-4 border border-gray-700">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
-                  <div className="flex-1 mx-4">
-                    <div className="h-2.5 bg-gray-700 rounded w-1/2"></div>
-                  </div>
-                </div>
-                {/* Colorful code-like elements */}
-                <div className="absolute top-20 left-6 right-6 space-y-4">
-                  <div className="h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded w-3/4"></div>
-                  <div className="h-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded w-1/2"></div>
-                  <div className="h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded w-2/3"></div>
-                  <div className="h-3 bg-gray-600 rounded w-1/3"></div>
-                  <div className="h-3 bg-gradient-to-r from-orange-500 to-yellow-500 rounded w-1/2"></div>
-                </div>
+              <div className="w-full h-80 relative overflow-hidden rounded-3xl border border-gray-800 shadow-2xl">
+                <Image 
+                  src="/images/aBitAboutMe.jpg" 
+                  alt="About Me - Nguyen The Phung"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
                 {/* Fun floating emojis */}
                 <div className="absolute bottom-8 right-8 text-4xl animate-bounce">💻</div>
                 <div className="absolute bottom-16 left-8 text-3xl animate-pulse">🚀</div>
-                <div className="absolute top-1/2 right-12 text-2xl animate-spin" style={{ animationDuration: '3s' }}>⚡</div>
+                <div className="absolute top-8 right-12 text-2xl animate-spin" style={{ animationDuration: '3s' }}>⚡</div>
               </div>
             </motion.div>
 
@@ -788,15 +815,21 @@ export default function HomePage() {
                 Software Developer & Computer Science Student passionate about creating awesome stuff! 🚀 
                 From web apps to AI, I love turning ideas into reality. Let's build something cool together! 💡
               </p>
-              <div className="flex space-x-3">
-                <a href="https://github.com/nguyenthephung" target="_blank" className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center hover:scale-110 transition-transform duration-200">
+              <div className="flex flex-wrap gap-3">
+                <a href="https://github.com/nguyenthephung" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center hover:scale-110 transition-transform duration-200">
                   <Github className="h-5 w-5 text-white" />
                 </a>
-                <a href="https://linkedin.com/in/nguyenthephung" target="_blank" className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                <a href="https://linkedin.com/in/nguyenthephung" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center hover:scale-110 transition-transform duration-200">
                   <Linkedin className="h-5 w-5 text-white" />
+                </a>
+                <a href="https://www.facebook.com/nguyenthe.phung.961" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                  <Facebook className="h-5 w-5 text-white" />
                 </a>
                 <a href="mailto:nguyenthephung61@gmail.com" className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-600 to-red-600 flex items-center justify-center hover:scale-110 transition-transform duration-200">
                   <Mail className="h-5 w-5 text-white" />
+                </a>
+                <a href="tel:0867951141" className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                  <Phone className="h-5 w-5 text-white" />
                 </a>
               </div>
             </div>
