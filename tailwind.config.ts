@@ -56,6 +56,7 @@ const config: Config = {
         "scale-up": "scaleUp 0.3s ease-out",
         "float": "float 6s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite alternate",
+        "spin-slow": "spin 20s linear infinite",
       },
       keyframes: {
         fadeIn: {

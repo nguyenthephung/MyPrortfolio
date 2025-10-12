@@ -1,27 +1,43 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Your Name",
-  description: "Modern portfolio website built with Next.js 15, React 19, TypeScript, and TailwindCSS",
-  keywords: ["portfolio", "developer", "web development", "react", "nextjs"],
-  authors: [{ name: "Your Name" }],
+  title: "Nguyen The Phung | Software Developer & Computer Science Student",
+  description: "Computer Science student with expertise in EEG-based applications, AI integration, and scalable web platforms. Building innovative software solutions with React, Next.js, Java, Python, and modern cloud technologies.",
+  keywords: [
+    "Nguyen The Phung", 
+    "Software Developer", 
+    "Computer Science Student", 
+    "Full-Stack Developer",
+    "React", 
+    "Next.js", 
+    "Java", 
+    "Python", 
+    "TypeScript",
+    "Spring Boot",
+    "Node.js",
+    "EEG signal processing",
+    "AI integration",
+    "Machine Learning",
+    "Ho Chi Minh City",
+    "Vietnam"
+  ],
+  authors: [{ name: "Nguyen The Phung", url: "https://github.com/nguyenthephung" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.com",
-    title: "Portfolio | Your Name",
-    description: "Modern portfolio website showcasing my work and skills",
-    siteName: "Your Portfolio",
+    url: "https://nguyenthephung-portfolio.vercel.app",
+    title: "Nguyen The Phung | Software Developer Portfolio",
+    description: "Computer Science student specializing in EEG-based applications, AI integration, and scalable web development. View my projects and experience.",
+    siteName: "Nguyen The Phung Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | Your Name",
-    description: "Modern portfolio website showcasing my work and skills",
+    title: "Nguyen The Phung | Software Developer Portfolio",
+    description: "Computer Science student specializing in EEG-based applications, AI integration, and scalable web development.",
   },
 };
 
@@ -31,16 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${inter.className} bg-white text-gray-900`}>
+        {children}
       </body>
     </html>
   );

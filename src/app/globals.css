@@ -49,6 +49,39 @@
   border-color: hsl(var(--color-border));
 }
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize animations for better performance */
+.animate-float,
+.animate-pulse,
+.animate-ping {
+  will-change: transform;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse,
+  .animate-ping {
+    animation: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize backdrop-blur */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
 body {
   background-color: hsl(var(--color-background));
   color: hsl(var(--color-foreground));
