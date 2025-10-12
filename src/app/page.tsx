@@ -118,7 +118,7 @@ export default function HomePage() {
               
               {/* Main heading */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-                <span className="text-gray-300">Hey, I'm </span>
+                <span className="text-gray-300">Hey, I&apos;m </span>
                 <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
                   Phung! 🎉
                 </span>
@@ -135,7 +135,7 @@ export default function HomePage() {
                 <span className="text-purple-400 font-semibold"> brain-computer interfaces 🧠</span>, 
                 <span className="text-pink-400 font-semibold"> AI magic 🤖</span>, to 
                 <span className="text-blue-400 font-semibold"> awesome web apps 🌐</span>.
-                Let's create something amazing together! ✨
+                Let&apos;s create something amazing together! ✨
               </p>
 
               {/* Social Links - Fun colors */}
@@ -227,7 +227,7 @@ export default function HomePage() {
               💼 My Journey
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Where I've been and what I've learned along the way! 🚀
+              Where I&apos;ve been and what I&apos;ve learned along the way! 🚀
             </p>
           </motion.div>
 
@@ -758,7 +758,7 @@ export default function HomePage() {
               </div>
               
               <p className="text-gray-300 leading-relaxed">
-                I'm currently studying <span className="font-semibold text-purple-400">Computer Science</span> at 
+                I&apos;m currently studying <span className="font-semibold text-purple-400">Computer Science</span> at 
                 VNUHCM - University Of Science (graduating March 2026) 🎓 and also doing a 
                 <span className="font-semibold text-pink-400"> System Engineering program</span> with 
                 Université Claude Bernard Lyon 1. Best of both worlds! 🇻🇳🇫🇷
@@ -794,7 +794,7 @@ export default function HomePage() {
 
               <div className="pt-4">
                 <p className="text-gray-400 italic">
-                  "Always learning, always building, always having fun! 🎉"
+                  &quot;Always learning, always building, always having fun! 🎉&quot;
                 </p>
               </div>
             </motion.div>
@@ -813,7 +813,7 @@ export default function HomePage() {
               </h3>
               <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
                 Software Developer & Computer Science Student passionate about creating awesome stuff! 🚀 
-                From web apps to AI, I love turning ideas into reality. Let's build something cool together! 💡
+                From web apps to AI, I love turning ideas into reality. Let&apos;s build something cool together! 💡
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="https://github.com/nguyenthephung" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center hover:scale-110 transition-transform duration-200">
