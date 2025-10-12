@@ -1,27 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, ExternalLink, MessageCircle, Phone, Facebook } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, MessageCircle, Phone, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ContactForm } from "@/components/contact-form";
 import { MobileMenu } from "@/components/mobile-menu";
-import { TechIcon } from "@/components/tech-icon";
 import Image from "next/image";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
 
 export default function HomePage() {
   return (
@@ -34,7 +18,7 @@ export default function HomePage() {
             animate={{ opacity: 1, x: 0 }}
             className="font-bold text-xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
           >
-            ✨ Phung's Portfolio
+            ✨ Phung&apos;s Portfolio
           </motion.div>
           <div className="flex items-center space-x-6">
             <motion.div
