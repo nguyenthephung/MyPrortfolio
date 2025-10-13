@@ -96,7 +96,7 @@ export default function HomePage() {
               className="order-1 lg:order-2 text-center lg:text-left"
             >
               {/* Friendly greeting */}
-              <div className="mb-4">
+              <div className="mb-4 mt-6">
                 <span className="text-5xl mb-4 inline-block animate-bounce">👋</span>
               </div>
               
@@ -236,7 +236,7 @@ export default function HomePage() {
                       </CardDescription>
                     </div>
                     <div className="text-pink-400 font-medium text-sm md:text-right">
-                      📅 Sep 2024 - Present
+                      📅 May 2025 - Sep 2025
                       <div className="text-gray-500 text-xs mt-1">📍 Ho Chi Minh City, Vietnam</div>
                     </div>
                   </div>
@@ -293,7 +293,7 @@ export default function HomePage() {
                       </CardDescription>
                     </div>
                     <div className="text-pink-400 font-medium text-sm md:text-right">
-                      📅 2022 - 2026
+                      📅 2021 - 2025
                       <div className="text-gray-500 text-xs mt-1">🎯 GPA: 3.1/4.0</div>
                     </div>
                   </div>
