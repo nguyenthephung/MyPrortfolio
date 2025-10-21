@@ -54,19 +54,49 @@
   box-sizing: border-box;
 }
 
-/* Optimize animations for better performance */
-.animate-float,
-.animate-pulse,
-.animate-ping {
-  will-change: transform;
+/* GPU acceleration for animations - CRITICAL for performance */
+.motion-safe\:animate-float,
+.motion-safe\:animate-pulse,
+[class*="motion"],
+[class*="transition"],
+[class*="hover:"],
+[class*="group-hover:"] {
+  will-change: auto;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Optimize for compositing layers */
+.bg-gradient-to-r,
+.bg-gradient-to-br,
+.bg-clip-text {
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize blur effects - reduced blur radius for better FPS */
+.blur-xl {
+  filter: blur(20px) !important;
+}
+
+.blur-2xl {
+  filter: blur(30px) !important;
+}
+
+.blur-3xl {
+  filter: blur(40px) !important;
 }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-pulse,
-  .animate-ping {
-    animation: none;
+  .animate-ping,
+  [class*="transition"],
+  [class*="duration"] {
+    animation: none !important;
+    transition: none !important;
   }
   
   * {
