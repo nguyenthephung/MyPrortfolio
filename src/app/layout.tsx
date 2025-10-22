@@ -43,10 +43,10 @@ export const metadata: Metadata = {
   icons: {
     // prefer an SVG favicon (generated) for crispness, fallback to the avatar JPG
     icon: [
-      { url: "/favicon.jpg", sizes: "any", type: "image/jpg+xml" },
+      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
       { url: "/images/myAvatart.jpg", sizes: "any" },
     ],
-    shortcut: "/favicon.jpg",
+    shortcut: "/favicon.svg",
     apple: "/images/myAvatart.jpg",
   },
 };
