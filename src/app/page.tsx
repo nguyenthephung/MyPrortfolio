@@ -269,7 +269,7 @@ export default function HomePage() {
                     </div>
                     <div className="text-pink-400 font-medium text-sm md:text-right">
                       2021 - 2025
-                      <div className="text-gray-500 text-xs mt-1">GPA: 3.1/4.0</div>
+                      <div className="text-gray-500 text-xs mt-1">GPA: 3.2/4.0</div>
                     </div>
                   </div>
                 </CardHeader>
