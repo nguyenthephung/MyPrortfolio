@@ -18,6 +18,7 @@ export default function HomePage() {
   // Memoize to prevent recreating array on every render
   const typingTexts = useMemo(() => [
     "Frontend Developer",
+    "Backend Developer",
     "React Enthusiast", 
     "UI/UX Lover",
     "Problem Solver",

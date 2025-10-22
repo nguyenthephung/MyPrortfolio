@@ -41,11 +41,12 @@ export const metadata: Metadata = {
   },
   // Use avatar image from public/images as favicon / icons
   icons: {
-    // browsers will pick an appropriate size
+    // prefer an SVG favicon (generated) for crispness, fallback to the avatar JPG
     icon: [
+      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
       { url: "/images/myAvatart.jpg", sizes: "any" },
     ],
-    shortcut: "/images/myAvatart.jpg",
+    shortcut: "/favicon.svg",
     apple: "/images/myAvatart.jpg",
   },
 };
