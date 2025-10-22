@@ -39,6 +39,15 @@ export const metadata: Metadata = {
     title: "Nguyen The Phung | Software Developer Portfolio",
     description: "Computer Science student specializing in EEG-based applications, AI integration, and scalable web development.",
   },
+  // Use avatar image from public/images as favicon / icons
+  icons: {
+    // browsers will pick an appropriate size
+    icon: [
+      { url: "/images/myAvatart.jpg", sizes: "any" },
+    ],
+    shortcut: "/images/myAvatart.jpg",
+    apple: "/images/myAvatart.jpg",
+  },
 };
 
 export default function RootLayout({
