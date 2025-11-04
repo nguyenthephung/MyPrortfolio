@@ -140,7 +140,7 @@ export default function HomePage() {
               {/* Main heading */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
                 <span className="text-gray-300">Hey, I&apos;m </span>
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent inline-block pb-1">
                   Phung!
                 </span>
               </h1>
@@ -161,11 +161,6 @@ export default function HomePage() {
                 <span className="text-blue-400 font-semibold"> awesome web apps</span>.
                 Let&apos;s create something amazing together!
               </p>
-
-        
-
-        
-             
             </motion.div>
           </div>
         </div>
