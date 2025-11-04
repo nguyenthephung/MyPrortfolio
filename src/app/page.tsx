@@ -5,7 +5,6 @@ import { Github, Linkedin, Mail, ExternalLink, MessageCircle, Phone, Facebook } 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MobileMenu } from "@/components/mobile-menu";
-import { LoadingScreen } from "@/components/loading-screen";
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
@@ -54,9 +53,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      {/* Loading Screen */}
-      <LoadingScreen />
-      
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-gray-900/95 border-b border-purple-500/20 z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
