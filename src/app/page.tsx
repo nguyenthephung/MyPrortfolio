@@ -309,11 +309,72 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* GreenMart Project */}
+            {/* RescueNet Project - NEW */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0 * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="group hover:shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 overflow-hidden">
+                <div className="w-full h-48 relative overflow-hidden">
+                  <Image 
+                    src="/images/RescueNet_Project.png" 
+                    alt="RescueNet Emergency Rescue Management System"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="flex items-center justify-between text-gray-100 group-hover:text-cyan-400 transition-colors">
+                    RescueNet - Emergency Rescue System
+                    <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" />
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed text-gray-400">
+                    Real-time emergency rescue management system with microservices architecture. Citizens submit SOS via text, voice, image, and GPS. 
+                    Features event-driven coordination, priority routing with Neo4j, live tracking with Redis Geo & WebSocket, and resource management.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {["Next.js", "TypeScript", "Spring Boot", "Kafka", "PostgreSQL", "Neo4j", "MongoDB", "Redis", "WebSocket", "Docker"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 text-cyan-300 rounded text-xs font-medium border border-cyan-500/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex space-x-2">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 border-gray-700 text-gray-300 hover:border-cyan-500 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors"
+                      onClick={() => window.open('https://github.com/nguyenthephung/RescueNet', '_blank')}
+                    >
+                      <Github className="h-4 w-4 mr-2" />
+                      GitHub
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-md hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300"
+                      onClick={() => window.open('https://rescue-net-tan.vercel.app/', '_blank')}
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Live Demo
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* GreenMart Project */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 * 0.1 }}
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-green-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 overflow-hidden">
@@ -374,7 +435,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 * 0.1 }}
+              transition={{ duration: 0.6, delay: 2 * 0.1 }}
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 overflow-hidden">
@@ -435,7 +496,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2 * 0.1 }}
+              transition={{ duration: 0.6, delay: 3 * 0.1 }}
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 overflow-hidden">
@@ -488,7 +549,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3 * 0.1 }}
+              transition={{ duration: 0.6, delay: 4 * 0.1 }}
               viewport={{ once: true }}
             >
               <Card className="group hover:shadow-2xl hover:shadow-red-500/30 transition-all duration-300 hover:-translate-y-2 border-0 bg-gradient-to-br from-gray-800/90 to-gray-900/90 overflow-hidden">
