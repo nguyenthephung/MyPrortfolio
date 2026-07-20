@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nguyen The Phung — Portfolio
 
-## Getting Started
+Personal portfolio site built with **Next.js 15** (App Router), **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Geist** font.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework**: Next.js 15 (App Router) + Turbopack
+- **UI**: Tailwind CSS v4 + custom design tokens (light/dark)
+- **Theme**: `next-themes` with system default, dark preferred
+- **Icons**: `lucide-react` (monochrome only, no gradient boxes)
+- **Fonts**: Geist Sans + Geist Mono
+- **Language**: TypeScript strict mode
+
+## Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx           # Metadata, theme provider, fonts
+│   ├── page.tsx             # Composes all sections
+│   └── globals.css          # Design tokens + typography
+├── components/
+│   ├── nav.tsx              # Sticky top nav
+│   ├── mobile-menu.tsx      # Mobile drawer
+│   ├── theme-toggle.tsx     # Dark / light switch
+│   ├── theme-provider.tsx   # next-themes wrapper
+│   ├── sections/
+│   │   ├── hero.tsx         # Landing headline + bio + short/long-term
+│   │   ├── experience.tsx   # Nested company / position timeline
+│   │   ├── projects.tsx     # Featured + earlier projects grid
+│   │   ├── skills.tsx       # Skill groups (backend-first)
+│   │   ├── contact.tsx      # Social + contact rows
+│   │   └── footer.tsx       # Small footer
+│   └── ui/                  # Primitives: Button, Card, Badge, Section
+└── lib/
+    ├── data/                # Single source of truth for content
+    │   ├── site.ts          # Bio + goals + socials
+    │   ├── experiences.ts   # Companies + positions + bullets + tech
+    │   ├── projects.ts      # Projects (featured + earlier)
+    │   └── skills.ts        # Skill groups
+    ├── types.ts             # Shared types
+    └── utils.ts             # cn() helper
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All content lives in `src/lib/data/*` — update those files to change bio, roles, projects, or skills without touching component code.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` — start dev server (Turbopack)
+- `npm run build` — production build
+- `npm run start` — start production server
+- `npm run lint` — run ESLint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **One accent color** (`hsl(217 91% 60%)` — Tailwind `blue-500`), no gradient chains.
+- **Border-based cards** (not gradient backgrounds) — hover reveals accent border.
+- **Fade-in animations only** — no scroll-triggered scale/rotate, no typing effect.
+- **Icons are monochrome** — never wrapped in colored gradient boxes.
+- **Font hierarchy**: Geist Sans for body, Geist Mono for periods, tech badges, and eyebrow labels.

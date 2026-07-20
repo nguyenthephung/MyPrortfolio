@@ -1,72 +1,57 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-export function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const menuItems = [
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#contact", label: "Contact" },
-  ];
+export function MobileMenu({
+  items,
+}: {
+  items: { href: string; label: string }[];
+}) {
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="md:hidden">
       <Button
         variant="ghost"
         size="icon"
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative z-50"
+        aria-label={open ? "Close menu" : "Open menu"}
+        onClick={() => setOpen(!open)}
+        className="text-muted-foreground hover:text-foreground"
       >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-40"
-              onClick={() => setIsOpen(false)}
-            />
-
-            {/* Menu */}
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 20, stiffness: 100 }}
-              className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-950 border-l border-gray-200 dark:border-gray-800 z-50"
-            >
-              <div className="p-6 pt-20">
-                <nav className="space-y-6">
-                  {menuItems.map((item, index) => (
-                    <motion.a
-                      key={item.href}
-                      href={item.href}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      onClick={() => setIsOpen(false)}
-                      className="block text-lg font-medium hover:text-blue-600 transition-colors"
-                    >
-                      {item.label}
-                    </motion.a>
-                  ))}
-                </nav>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {open && (
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-background/70 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          <div
+            className={cn(
+              "fixed right-0 top-14 z-50 w-64 border-l border-t border-b border-border bg-card p-6 shadow-xl",
+              "animate-fade-in"
+            )}
+          >
+            <nav className="flex flex-col gap-4">
+              {items.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </>
+      )}
     </div>
   );
 }

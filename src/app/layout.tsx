@@ -1,54 +1,65 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { ThemeProvider } from "@/components/theme-provider";
+import { site } from "@/lib/data/site";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Nguyen The Phung | Software Developer & Computer Science Student",
-  description: "Computer Science student with expertise in EEG-based applications, AI integration, and scalable web platforms. Building innovative software solutions with React, Next.js, Java, Python, and modern cloud technologies.",
+  metadataBase: new URL("https://nguyenthephung-portfolio.vercel.app"),
+  title: {
+    default: `${site.name} — ${site.role}`,
+    template: `%s — ${site.name}`,
+  },
+  description: site.bio,
   keywords: [
-    "Nguyen The Phung", 
-    "Software Developer", 
-    "Computer Science Student", 
-    "Full-Stack Developer",
-    "React", 
-    "Next.js", 
-    "Java", 
-    "Python", 
-    "TypeScript",
+    "Nguyen The Phung",
+    "Full Stack Software Engineer",
+    "Java Backend Engineer",
     "Spring Boot",
-    "Node.js",
-    "EEG signal processing",
-    "AI integration",
-    "Machine Learning",
+    "Spring Security",
+    "Java 17",
+    "Oracle",
+    "Kafka",
+    "Redis",
+    "Angular",
+    "Nx Module Federation",
+    "Distributed Systems",
+    "Fintech",
+    "Enterprise Banking",
     "Ho Chi Minh City",
-    "Vietnam"
+    "Vietnam",
   ],
-  authors: [{ name: "Nguyen The Phung", url: "https://github.com/nguyenthephung" }],
+  authors: [{ name: site.name, url: "https://github.com/nguyenthephung" }],
+  creator: site.name,
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://nguyenthephung-portfolio.vercel.app",
-    title: "Nguyen The Phung | Software Developer Portfolio",
-    description: "Computer Science student specializing in EEG-based applications, AI integration, and scalable web development. View my projects and experience.",
-    siteName: "Nguyen The Phung Portfolio",
+    title: `${site.name} — ${site.role}`,
+    description: site.bio,
+    siteName: `${site.name} — Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nguyen The Phung | Software Developer Portfolio",
-    description: "Computer Science student specializing in EEG-based applications, AI integration, and scalable web development.",
+    title: `${site.name} — ${site.role}`,
+    description: site.bio,
   },
-  // Use avatar image from public/images as favicon / icons
   icons: {
-    // prefer an SVG favicon (generated) for crispness, fallback to the avatar JPG
     icon: [
-      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/images/myAvatart.jpg", sizes: "any" },
     ],
     shortcut: "/favicon.svg",
     apple: "/images/myAvatart.jpg",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({
@@ -57,9 +68,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white text-gray-900`}>
-        {children}
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
