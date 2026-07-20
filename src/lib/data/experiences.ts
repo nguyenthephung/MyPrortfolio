@@ -62,11 +62,11 @@ export const experiences: Experience[] = [
   },
   {
     company: "BrainLife Link JSC",
-    totalPeriod: "May 2025 — Sep 2025",
+    totalPeriod: "May 2024 — Sep 2024",
     positions: [
       {
         title: "Software Research & Engineer Intern",
-        period: "May 2025 — Sep 2025",
+        period: "May 2024 — Sep 2024",
         location: "Ho Chi Minh City, Vietnam",
         summary:
           "Concurrent part-time internship on brain-computer interface (BCI) technology, bridging signal processing, ML, and app delivery.",

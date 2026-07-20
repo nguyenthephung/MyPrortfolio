@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     slug: "rescuenet",
     title: "RescueNet — Emergency Rescue Coordination Platform",
-    period: "Sep 2025 — Now",
+    period: "Sep 2025 — Nov 2025",
     role: "Full Stack Engineer",
     team: "Team of 3",
     summary:
