@@ -33,7 +33,7 @@ export const projects: Project[] = [
     image: "/images/RescueNet_Project.png",
     links: {
       github: "https://github.com/nguyenthephung/RescueNet",
-      demo: "https://rescue-net-tan.vercel.app/",
+      demo: "https://rescue-net-git-feature-dev-kafk-eec751-nguyenthephungs-projects.vercel.app/emergency",
     },
     featured: true,
   },
