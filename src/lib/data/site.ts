@@ -7,7 +7,7 @@ export const site: SiteConfig = {
   email: "nguyenthephung61@gmail.com",
   phone: "+84 867 951 141",
   avatarSrc: "/images/myAvatart.jpeg",
-  bio: "Full Stack Software Engineer with 1.5 years of experience building enterprise banking software at FPT Information System. Strongest in Java and Spring Boot backend engineering — REST microservices on Oracle, JWT-based Spring Security, Kafka messaging, and Redis-backed caching — currently contributing to the Teller Platform for Eximbank.",
+  bio: "Full Stack Software Engineer with 2 years of experience building enterprise banking software at FPT Information System. Strongest in Java and Spring Boot backend engineering — REST microservices on Oracle, JWT-based Spring Security, Kafka messaging, and Redis-backed caching — currently contributing to the Teller Platform for Eximbank.",
   shortTerm:
     "Grow into a strong mid-level Java backend engineer, owning production features end-to-end on distributed banking systems and deepening Spring Boot, Kafka, Redis, and Oracle mastery.",
   longTerm:

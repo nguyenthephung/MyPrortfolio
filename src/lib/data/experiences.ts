@@ -4,11 +4,11 @@ export const experiences: Experience[] = [
   {
     company: "FPT Information System",
     companyHref: "https://fpt-is.com",
-    totalPeriod: "Jan 2025 — Now",
+    totalPeriod: "Aug 2024 — Now",
     positions: [
       {
         title: "Full Stack Software Engineer",
-        period: "Jul 2025 — Now",
+        period: "Feb 2025 — Now",
         location: "Ho Chi Minh City, Vietnam",
         summary:
           "Delivering features end-to-end on the Teller Platform for Eximbank — a 14-service Spring Boot 3 / Java 17 backend and an Angular 21 Nx micro-frontend architecture.",
