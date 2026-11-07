@@ -4,11 +4,11 @@ export const experiences: Experience[] = [
   {
     company: "FPT Information System",
     companyHref: "https://fpt-is.com",
-    totalPeriod: "Aug 2024 — Now",
+    totalPeriod: "Mar 2025 – Sep 2026",
     positions: [
       {
         title: "Full Stack Software Engineer",
-        period: "Feb 2025 — Now",
+        period: "Aug 2025 – Sep2026",
         location: "Ho Chi Minh City, Vietnam",
         summary:
           "Delivering features end-to-end on the Teller Platform for Eximbank — a 14-service Spring Boot 3 / Java 17 backend and an Angular 21 Nx micro-frontend architecture.",
@@ -38,7 +38,7 @@ export const experiences: Experience[] = [
       },
       {
         title: "Software Engineer Intern",
-        period: "Jan 2025 — Jun 2025",
+        period: "Mar 2024 – Aug 2025",
         location: "Ho Chi Minh City, Vietnam",
         summary:
           "Rotated across several enterprise-banking projects during a 6-month internship, with small, well-scoped contributions under senior supervision.",
