@@ -46,32 +46,33 @@ export function Contact() {
             </a>
 
           
+
 <div className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2 md:grid-cols-3">
   {site.socials
     .filter((s) => s.icon !== "mail")
     .map((s) =>
       s.label === "Zalo" ? (
-        <div
+        <a
           key={s.label}
-          className="flex items-center gap-3 rounded-xl border border-border p-4"
+          href="/images/zalo.png"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 rounded-xl border border-border p-4 transition-colors hover:bg-muted"
         >
-          <img
-            src="/images/zalo.png"
-            alt="Zalo QR Code"
-            className="h-16 w-16 rounded-lg object-contain"
-          />
+          <MessageCircle className="h-6 w-6 shrink-0 text-muted-foreground" />
           <div className="min-w-0">
             <p className="font-medium">Zalo</p>
             <p className="text-sm text-muted-foreground">
-              Scan to connect
+              0867951141
             </p>
           </div>
-        </div>
+        </a>
       ) : (
         <ContactRow key={s.label} social={s} />
       )
     )}
 </div>
+
 
           </div>
         </Reveal>

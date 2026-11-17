@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Download, MapPin, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Download, MapPin, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/data/site";
 
@@ -76,6 +76,7 @@ export function Hero() {
                 </Button>
               )}
               
+
 <div className="ml-1 flex items-center gap-1">
   {[
     { href: "https://github.com/nguyenthephung", icon: Github, label: "GitHub" },
@@ -101,11 +102,7 @@ export function Hero() {
     aria-label="Zalo QR Code"
     className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
   >
-    <img
-      src="/images/zalo.png"
-      alt="Zalo"
-      className="h-6 w-6 rounded object-contain"
-    />
+    <MessageCircle className="h-5 w-5" />
   </a>
 </div>
 
