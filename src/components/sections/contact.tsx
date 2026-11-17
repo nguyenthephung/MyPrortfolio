@@ -1,3 +1,4 @@
+
 import { ArrowUpRight, Facebook, Github, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { site } from "@/lib/data/site";
@@ -28,9 +29,11 @@ export function Contact() {
               <span className="h-px w-8 bg-primary/60" />
               Contact
             </p>
+
             <h2 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-balance md:text-6xl">
               Let&apos;s build something <span className="text-gradient">reliable</span> together.
             </h2>
+
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               I&apos;m open to backend / full-stack roles in fintech and product teams. Whether it&apos;s
               an opportunity or a chat about Java and distributed systems — my inbox is open.
@@ -45,35 +48,20 @@ export function Contact() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
 
-          
-
-<div className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2 md:grid-cols-3">
-  {site.socials
-    .filter((s) => s.icon !== "mail")
-    .map((s) =>
-      s.label === "Zalo" ? (
-        <a
-          key={s.label}
-          href="/images/zalo.png"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-border p-4 transition-colors hover:bg-muted"
-        >
-          <MessageCircle className="h-6 w-6 shrink-0 text-muted-foreground" />
-          <div className="min-w-0">
-            <p className="font-medium">Zalo</p>
-            <p className="text-sm text-muted-foreground">
-              0867951141
-            </p>
-          </div>
-        </a>
-      ) : (
-        <ContactRow key={s.label} social={s} />
-      )
-    )}
-</div>
-
-
+            <div className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2 md:grid-cols-3">
+              {site.socials
+                .filter((s) => s.icon !== "mail")
+                .map((s) => (
+                  <ContactRow
+                    key={s.label}
+                    social={
+                      s.label === "Zalo"
+                        ? { ...s, href: "/images/zalo.png" }
+                        : s
+                    }
+                  />
+                ))}
+            </div>
           </div>
         </Reveal>
       </div>
@@ -83,22 +71,28 @@ export function Contact() {
 
 function ContactRow({ social }: { social: SocialLink }) {
   const Icon = iconMap[social.icon];
+  const isZalo = social.label === "Zalo";
   const external = social.href.startsWith("http");
+
   return (
     <a
       href={social.href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
+      target={isZalo || external ? "_blank" : undefined}
+      rel={isZalo || external ? "noopener noreferrer" : undefined}
+      aria-label={isZalo ? "Open Zalo QR Code" : social.label}
       className="group flex items-center gap-3 rounded-xl border border-border bg-background/80 p-3.5 transition-colors hover:border-primary/50"
     >
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
         <Icon className="h-4 w-4" />
       </span>
+
       <span className="min-w-0">
         <span className="block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
           {social.label}
         </span>
-        <span className="block truncate text-sm font-medium">{social.handle}</span>
+        <span className="block truncate text-sm font-medium">
+          {social.handle}
+        </span>
       </span>
     </a>
   );
