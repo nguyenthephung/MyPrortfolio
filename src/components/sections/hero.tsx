@@ -27,14 +27,14 @@ export function Hero() {
       {/* Background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="bg-grid absolute inset-0" />
-        <div className="animate-float absolute -top-32 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-primary/25 blur-[120px]" />
-        <div className="animate-float absolute top-40 right-[-10%] h-[320px] w-[420px] rounded-full bg-accent/20 blur-[120px] [animation-delay:-4s]" />
+        <div className="absolute -top-60 left-1/2 h-[720px] w-[1100px] -translate-x-1/2 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.22),transparent)]" />
+        <div className="absolute top-20 right-[-15%] h-[560px] w-[640px] bg-[radial-gradient(closest-side,hsl(var(--accent)/0.16),transparent)]" />
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-6">
         <div className="grid items-center gap-14 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground backdrop-blur">
+            <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500/70" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -98,8 +98,8 @@ export function Hero() {
 
           {/* Profile card */}
           <div className="relative mx-auto w-full max-w-sm">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/30 via-transparent to-accent/30 blur-2xl" />
-            <div className="glass overflow-hidden rounded-[1.75rem] border border-border p-3 shadow-2xl">
+            <div className="absolute -inset-10 -z-10 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.25),transparent)]" />
+            <div className="overflow-hidden bg-card rounded-[1.75rem] border border-border p-3 shadow-2xl">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem]">
                 <Image
                   src={site.avatarSrc}
@@ -129,7 +129,7 @@ export function Hero() {
 
       {/* Tech marquee */}
       <div className="relative mt-20 overflow-hidden border-y border-border/60 py-4 [mask-image:linear-gradient(to_right,transparent,#000_15%,#000_85%,transparent)]">
-        <div className="animate-marquee flex w-max gap-10 font-mono text-sm text-muted-foreground">
+        <div className="animate-marquee flex w-max will-change-transform gap-10 font-mono text-sm text-muted-foreground">
           {[...marquee, ...marquee].map((t, i) => (
             <span key={i} className="flex items-center gap-10 whitespace-nowrap">
               {t}

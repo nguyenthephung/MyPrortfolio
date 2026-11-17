@@ -72,7 +72,7 @@ function ProjectCover({ project }: { project: Project }) {
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-violet-950 via-indigo-950 to-slate-950 p-8 text-center">
       <div className="bg-grid absolute inset-0 opacity-30 [mask-image:none]" />
-      <div className="relative grid h-16 w-16 place-items-center rounded-2xl bg-white/10 ring-1 ring-white/20 backdrop-blur">
+      <div className="relative grid h-16 w-16 place-items-center rounded-2xl bg-white/10 ring-1 ring-white/20">
         <Scale className="h-8 w-8 text-violet-200" />
       </div>
       <p className="relative text-3xl font-semibold tracking-tight text-white">{project.title}</p>
@@ -94,7 +94,7 @@ function FeaturedProject({ project, reverse }: { project: Project; reverse?: boo
       <div
         aria-hidden
         className={cn(
-          "pointer-events-none absolute -top-24 h-72 w-72 rounded-full bg-gradient-to-br blur-3xl",
+          "pointer-events-none absolute -top-40 h-96 w-96 rounded-full bg-gradient-to-br opacity-60 [mask-image:radial-gradient(closest-side,#000,transparent)]",
           reverse ? "-left-24" : "-right-24",
           accentMap[project.accent ?? "violet"]
         )}

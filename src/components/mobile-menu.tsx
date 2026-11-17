@@ -27,7 +27,7 @@ export function MobileMenu({
       {open && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-background/70 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-background/80"
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />

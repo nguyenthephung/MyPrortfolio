@@ -19,7 +19,7 @@ export function Contact() {
         <Reveal className="relative overflow-hidden rounded-[2rem] border border-border bg-card px-6 py-14 text-center md:px-16 md:py-20">
           <div aria-hidden className="pointer-events-none absolute inset-0">
             <div className="bg-grid absolute inset-0 opacity-60" />
-            <div className="absolute -bottom-40 left-1/2 h-80 w-[600px] -translate-x-1/2 rounded-full bg-primary/25 blur-[100px]" />
+            <div className="absolute -bottom-64 left-1/2 h-[520px] w-[900px] -translate-x-1/2 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.25),transparent)]" />
           </div>
 
           <div className="relative">
@@ -67,7 +67,7 @@ function ContactRow({ social }: { social: SocialLink }) {
       href={social.href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group flex items-center gap-3 rounded-xl border border-border bg-background/60 p-3.5 backdrop-blur transition-colors hover:border-primary/50"
+      className="group flex items-center gap-3 rounded-xl border border-border bg-background/80 p-3.5 transition-colors hover:border-primary/50"
     >
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
         <Icon className="h-4 w-4" />
