@@ -63,11 +63,6 @@ export function Hero() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <Button asChild size="lg">
-                <Link href="#projects">
-                  See my work <ArrowRight />
-                </Link>
-              </Button>
               {site.resumeUrl && (
                 <Button asChild size="lg" variant="outline">
                   <a href={site.resumeUrl} target="_blank" rel="noopener noreferrer">
