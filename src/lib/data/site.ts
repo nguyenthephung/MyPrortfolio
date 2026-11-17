@@ -56,8 +56,8 @@ export const site: SiteConfig = {
     },
     {
       label: "Zalo",
-      href: "https://zalo.me/0867951141",
-      handle: "0867951141",
+      href: "/images/zalo.png",
+      handle: "Quét QR để liên hệ",
       icon: "message-circle",
     },
     {
