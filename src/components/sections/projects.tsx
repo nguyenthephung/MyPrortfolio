@@ -104,15 +104,15 @@ function FeaturedProject({ project, reverse }: { project: Project; reverse?: boo
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn("block p-3 lg:p-4", reverse && "lg:order-2")}
+          className={cn("block min-w-0 p-3 lg:p-4", reverse && "lg:order-2")}
           aria-label={`Open ${project.title}`}
         >
-          <div className="relative aspect-[16/10] h-full w-full overflow-hidden rounded-2xl border border-border bg-muted">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-muted lg:aspect-auto lg:h-full lg:min-h-[340px]">
             <ProjectCover project={project} />
           </div>
         </a>
 
-        <div className={cn("flex flex-col p-6 md:p-8 lg:py-10", reverse && "lg:order-1")}>
+        <div className={cn("flex min-w-0 flex-col p-6 md:p-8 lg:py-10", reverse && "lg:order-1")}>
           <p className="font-mono text-xs text-muted-foreground">
             {project.period} · {project.role}
             {project.team ? ` · ${project.team}` : ""}
