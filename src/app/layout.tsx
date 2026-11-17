@@ -50,14 +50,13 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.role} (${site.tagline})`,
     description: site.bio,
   },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/images/myAvatart.jpeg", sizes: "any" },
-    ],
-    shortcut: "/favicon.svg",
-    apple: "/images/myAvatart.jpeg",
-  },
+ icons: {
+  icon: [
+    { url: "/favicon.png", type: "image/png" },
+  ],
+  shortcut: "/favicon.png",
+  apple: "/favicon.png",
+},
 };
 
 export const viewport: Viewport = {
