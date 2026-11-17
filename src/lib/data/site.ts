@@ -38,7 +38,7 @@ export const site: SiteConfig = {
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/ph%E1%BB%A5ng-nguy%E1%BB%85n-th%E1%BB%83-285107385/",
+      href: "https://www.linkedin.com/in/th%E1%BB%83-ph%E1%BB%A5ng-nguy%E1%BB%85n-285107385/",
       handle: "Nguyen The Phung",
       icon: "linkedin",
     },

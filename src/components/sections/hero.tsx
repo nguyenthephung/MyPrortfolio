@@ -75,24 +75,40 @@ export function Hero() {
                   </a>
                 </Button>
               )}
-              <div className="ml-1 flex items-center gap-1">
-                {[
-                  { href: "https://github.com/nguyenthephung", icon: Github, label: "GitHub" },
-                  { href: site.socials.find((s) => s.icon === "linkedin")!.href, icon: Linkedin, label: "LinkedIn" },
-                  { href: `mailto:${site.email}`, icon: Mail, label: "Email" },
-                ].map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
+              
+<div className="ml-1 flex items-center gap-1">
+  {[
+    { href: "https://github.com/nguyenthephung", icon: Github, label: "GitHub" },
+    { href: site.socials.find((s) => s.icon === "linkedin")!.href, icon: Linkedin, label: "LinkedIn" },
+    { href: `mailto:${site.email}`, icon: Mail, label: "Email" },
+  ].map(({ href, icon: Icon, label }) => (
+    <a
+      key={label}
+      href={href}
+      aria-label={label}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noopener noreferrer"
+      className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+    >
+      <Icon className="h-5 w-5" />
+    </a>
+  ))}
+
+  <a
+    href="/images/zalo.png"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Zalo QR Code"
+    className="grid h-11 w-11 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+  >
+    <img
+      src="/images/zalo.png"
+      alt="Zalo"
+      className="h-6 w-6 rounded object-contain"
+    />
+  </a>
+</div>
+
             </div>
           </div>
 

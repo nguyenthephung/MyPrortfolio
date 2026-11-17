@@ -45,13 +45,34 @@ export function Contact() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
 
-            <div className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2 md:grid-cols-3">
-              {site.socials
-                .filter((s) => s.icon !== "mail")
-                .map((s) => (
-                  <ContactRow key={s.label} social={s} />
-                ))}
-            </div>
+          
+<div className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2 md:grid-cols-3">
+  {site.socials
+    .filter((s) => s.icon !== "mail")
+    .map((s) =>
+      s.label === "Zalo" ? (
+        <div
+          key={s.label}
+          className="flex items-center gap-3 rounded-xl border border-border p-4"
+        >
+          <img
+            src="/images/zalo.png"
+            alt="Zalo QR Code"
+            className="h-16 w-16 rounded-lg object-contain"
+          />
+          <div className="min-w-0">
+            <p className="font-medium">Zalo</p>
+            <p className="text-sm text-muted-foreground">
+              Scan to connect
+            </p>
+          </div>
+        </div>
+      ) : (
+        <ContactRow key={s.label} social={s} />
+      )
+    )}
+</div>
+
           </div>
         </Reveal>
       </div>
