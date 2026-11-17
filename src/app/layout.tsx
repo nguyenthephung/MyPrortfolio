@@ -6,9 +6,9 @@ import { site } from "@/lib/data/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nguyenthephung-portfolio.vercel.app"),
+  metadataBase: new URL("https://thephung.vercel.app"),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: `${site.name} — ${site.role} (${site.tagline})`,
     template: `%s — ${site.name}`,
   },
   description: site.bio,
@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     "Redis",
     "Angular",
     "Nx Module Federation",
+    "RabbitMQ",
+    "Microservices",
+    "Event-Driven Architecture",
+    "Eximbank",
+    "FPT Information System",
     "Distributed Systems",
     "Fintech",
     "Enterprise Banking",
@@ -35,30 +40,30 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nguyenthephung-portfolio.vercel.app",
-    title: `${site.name} — ${site.role}`,
+    url: "https://thephung.vercel.app",
+    title: `${site.name} — ${site.role} (${site.tagline})`,
     description: site.bio,
     siteName: `${site.name} — Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} — ${site.role} (${site.tagline})`,
     description: site.bio,
   },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/images/myAvatart.jpg", sizes: "any" },
+      { url: "/images/myAvatart.jpeg", sizes: "any" },
     ],
     shortcut: "/favicon.svg",
-    apple: "/images/myAvatart.jpg",
+    apple: "/images/myAvatart.jpeg",
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090f" },
   ],
 };
 

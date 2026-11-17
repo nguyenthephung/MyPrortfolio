@@ -33,7 +33,7 @@ export function MobileMenu({
           />
           <div
             className={cn(
-              "fixed right-0 top-14 z-50 w-64 border-l border-t border-b border-border bg-card p-6 shadow-xl",
+              "fixed inset-x-4 top-20 z-50 rounded-2xl border border-border bg-card p-6 shadow-xl",
               "animate-fade-in"
             )}
           >

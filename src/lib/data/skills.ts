@@ -1,81 +1,97 @@
-import type { SkillGroup } from "@/lib/types";
+import type { Certification, Education, Language, SkillGroup } from "@/lib/types";
 
 export const skills: SkillGroup[] = [
   {
-    label: "Languages",
-    items: ["Java", "TypeScript", "JavaScript", "SQL", "Python", "C++", "C#"],
-  },
-  {
-    label: "Java / Backend",
+    label: "Backend",
+    description: "Where I spend most of my time.",
+    icon: "server",
     items: [
+      "Java",
       "Spring Boot 3",
       "Spring MVC",
       "Spring Security",
-      "Spring Data JPA",
-      "Spring Kafka",
-      "Spring WebFlux (WebClient)",
-      "Spring AOP",
-      "REST",
-      "JWT",
-      "OpenAPI / Swagger",
+      "Spring Data JPA / Hibernate",
+      "RESTful API",
+      "JWT (ES256)",
+      "RBAC",
+      "Maven / Gradle",
       "JUnit",
-      "Maven",
+      "Mockito",
     ],
   },
   {
-    label: "Front-end",
+    label: "Messaging, Caching & Data",
+    description: "Moving and storing data safely.",
+    icon: "database",
     items: [
-      "Angular 21",
-      "Nx",
-      "Module Federation",
-      "@ngrx/signals",
-      "RxJS",
-      "Angular Reactive Forms",
-      "React",
-      "Next.js",
-      "TailwindCSS",
-      "Redux",
-    ],
-  },
-  {
-    label: "Data & Caching",
-    items: [
+      "Apache Kafka",
+      "RabbitMQ",
+      "WebSocket",
+      "Redis (Cache & Distributed Locks)",
       "Oracle",
       "PostgreSQL",
       "MongoDB",
-      "MySQL",
-      "Redis (Lettuce, Redisson)",
-      "HikariCP",
     ],
   },
   {
-    label: "Messaging & Real-time",
-    items: ["Apache Kafka", "WebSocket"],
-  },
-  {
-    label: "DevOps & Cloud",
+    label: "Frontend",
+    description: "Shipping the UI end to end.",
+    icon: "layout",
     items: [
-      "Docker",
-      "Git",
-      "GitLab CI/CD",
-      "GitHub Actions",
-      "Nginx",
-      "Firebase",
-      "Vercel",
-      "Render",
-      "Google Cloud",
+      "Angular",
+      "Nx",
+      "Module Federation",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "Ant Design",
+      "HTML5 / CSS3",
     ],
   },
   {
-    label: "Concepts",
+    label: "Architecture & DevOps",
+    description: "Building systems that hold up.",
+    icon: "cloud",
     items: [
       "Microservices",
-      "Layered Architecture",
-      "DTO / Mapper (MapStruct + Lombok)",
-      "Repository / Service pattern",
-      "Dependency Injection",
-      "Maker-Checker approval workflow",
-      "OOP & Design Patterns",
+      "Event-Driven Architecture",
+      "Idempotency & Concurrency Control",
+      "Docker",
+      "Kubernetes",
+      "GitLab CI/CD",
+      "Secure Coding (OWASP)",
+      "Agile / Scrum",
+      "Jira",
+      "Figma",
     ],
   },
+];
+
+export const education: Education = {
+  school: "VNUHCM – University of Science × Université Claude Bernard Lyon 1",
+  program: "Vietnam–France Dual-Degree Program",
+  period: "Sep 2021 – Sep 2025",
+  degrees: [
+    {
+      title: "B.S. in Computer Science",
+      detail: "VNUHCM – University of Science · Sep 2021 – Mar 2025",
+    },
+    {
+      title: "B.Eng. in System Engineering",
+      detail: "Université Claude Bernard Lyon 1 · Sep 2021 – Sep 2025",
+    },
+  ],
+};
+
+export const certifications: Certification[] = [
+  { name: "IBM Full Stack Software Developer", issuer: "IBM · Professional Certificate" },
+  { name: "Google Cloud: Cloud Engineer", issuer: "Google Cloud · Coursera" },
+];
+
+export const languages: Language[] = [
+  { name: "Vietnamese", level: "Native" },
+  { name: "English", level: "Intermediate" },
+  { name: "French", level: "Intermediate · DELF B1" },
 ];
