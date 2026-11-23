@@ -1,99 +1,119 @@
-import { ArrowUpRight, Briefcase } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
-import { Reveal } from "@/components/reveal";
 import { experiences } from "@/lib/data/experiences";
 
 export function Experience() {
   return (
     <Section
       id="experience"
-      index="02"
+      index="03"
       eyebrow="Experience"
+      specMeta="FPT Information System · Eximbank · 2024–2026"
       title={
         <>
-          From intern to engineer on <span className="text-gradient">Eximbank&apos;s core platforms.</span>
+          From intern to engineer on Eximbank&apos;s core platforms.{" "}
+          <span className="text-muted-foreground">
+            Production banking software delivered with PMs, BAs, QC and lead-reviewed merges.
+          </span>
         </>
       }
-      description="Production banking software, delivered in a real team with real stakes — PMs, BAs, QC and lead-reviewed merges."
     >
-      <div className="space-y-16">
+      <div className="space-y-12">
         {experiences.map((exp) => (
-          <div key={exp.company} className="grid gap-8 lg:grid-cols-[260px_1fr]">
-            {/* Company column */}
-            <Reveal className="lg:sticky lg:top-28 lg:self-start">
-              <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-card">
-                  <Briefcase className="h-5 w-5 text-primary" />
-                </div>
-                <div>
+          <div key={exp.company} className="border-t border-border pt-6">
+            {/* Company header bar */}
+            <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+              <div className="flex flex-wrap items-baseline gap-3">
+                <h3 className="text-[22px] font-medium tracking-[-0.02em] text-foreground md:text-[24px]">
                   {exp.companyHref ? (
                     <a
                       href={exp.companyHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-1 font-semibold tracking-tight hover:text-primary"
+                      className="m-link inline-flex items-center gap-1 hover:text-primary"
                     >
                       {exp.company}
-                      <ArrowUpRight className="h-3.5 w-3.5 opacity-50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
                     </a>
                   ) : (
-                    <p className="font-semibold tracking-tight">{exp.company}</p>
+                    exp.company
                   )}
-                  <p className="font-mono text-xs text-muted-foreground">
-                    {exp.totalPeriod}
-                    {exp.type ? ` · ${exp.type}` : ""}
-                  </p>
-                </div>
+                </h3>
+                {exp.type && (
+                  <span className="font-mono text-[13px] text-muted-foreground">
+                    · {exp.type}
+                  </span>
+                )}
               </div>
-            </Reveal>
+              <span className="font-mono text-[13px] font-medium text-foreground tabular-nums">
+                {exp.totalPeriod}
+              </span>
+            </div>
 
-            {/* Positions */}
-            <ol className="relative space-y-6 border-l border-border pl-6 md:pl-8">
-              {exp.positions.map((pos, i) => (
-                <Reveal as="li" key={pos.title + pos.period} delay={i * 60} className="relative">
-                  <span
-                    aria-hidden
-                    className="absolute top-7 -left-[calc(1.5rem+6px)] h-3 w-3 rounded-full border-2 border-background bg-gradient-to-br from-primary to-accent ring-4 ring-primary/15 md:-left-[calc(2rem+6px)]"
-                  />
-                  <div className="glow-card rounded-2xl border border-border bg-card p-6 md:p-7">
-                    <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
-                      <div>
-                        <h3 className="text-lg font-semibold tracking-tight md:text-xl">{pos.title}</h3>
-                        {pos.project && (
-                          <p className="mt-0.5 text-sm font-medium text-primary">{pos.project}</p>
-                        )}
+            {/* Positions as statement-style ledger rows */}
+            <ol className="divide-y divide-border border-y border-border">
+              {exp.positions.map((pos) => (
+                <li
+                  key={pos.title + pos.period}
+                  className="grid grid-cols-1 gap-4 py-7 lg:grid-cols-12 lg:gap-6"
+                >
+                  {/* Left column: period & location */}
+                  <div className="font-mono text-[13px] tabular-nums lg:col-span-3">
+                    <div className="font-medium text-foreground">{pos.period}</div>
+                    {pos.location && (
+                      <div className="mt-1 text-muted-foreground">
+                        {pos.location}
                       </div>
-                      <span className="rounded-full bg-muted px-3 py-1 font-mono text-xs text-muted-foreground">
-                        {pos.period}
-                      </span>
-                    </div>
+                    )}
+                    {pos.project && (
+                      <div className="mt-2 inline-block rounded-[4px] border border-primary/30 bg-primary/8 px-2 py-0.5 text-[13px] font-medium text-primary">
+                        {pos.project}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Middle & right column: role title, summary, bullets, mono stack */}
+                  <div className="lg:col-span-9">
+                    <h4 className="text-[20px] font-medium leading-[1.25] tracking-[-0.015em] text-foreground md:text-[22px]">
+                      {pos.title}
+                    </h4>
 
                     {pos.summary && (
-                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                      <p className="mt-2.5 max-w-[68ch] text-[16px] leading-[1.6] text-foreground/90">
                         {pos.summary}
                       </p>
                     )}
 
                     <ul className="mt-4 space-y-2.5">
                       {pos.bullets.map((b, j) => (
-                        <li key={j} className="flex gap-3 text-sm leading-relaxed text-foreground/85 md:text-[15px]">
-                          <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                        <li
+                          key={j}
+                          className="grid grid-cols-[16px_1fr] items-baseline text-[16px] leading-[1.6] text-muted-foreground"
+                        >
+                          <span
+                            aria-hidden
+                            className="font-mono text-[13px] text-primary"
+                          >
+                            —
+                          </span>
                           <span>
-                            {b.label && <span className="font-semibold text-foreground">{b.label}: </span>}
+                            {b.label && (
+                              <strong className="font-medium text-foreground">
+                                {b.label}.{" "}
+                              </strong>
+                            )}
                             {b.text}
                           </span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="mt-5 flex flex-wrap gap-1.5">
-                      {pos.tech.map((t) => (
-                        <Badge key={t}>{t}</Badge>
-                      ))}
+                    <div className="mt-4 border-t border-border/70 pt-3 font-mono text-[13px] text-muted-foreground">
+                      <span className="font-medium text-foreground">Stack: </span>
+                      {pos.tech.join(" · ")}
                     </div>
                   </div>
-                </Reveal>
+                </li>
               ))}
             </ol>
           </div>

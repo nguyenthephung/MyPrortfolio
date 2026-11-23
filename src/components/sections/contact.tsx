@@ -1,6 +1,14 @@
-
-import { ArrowUpRight, Facebook, Github, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
-import { Reveal } from "@/components/reveal";
+import {
+  ArrowUpRight,
+  Download,
+  Facebook,
+  Github,
+  Linkedin,
+  Mail,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
+import { Section } from "@/components/ui/section";
 import { site } from "@/lib/data/site";
 import type { SocialLink } from "@/lib/types";
 
@@ -15,57 +23,71 @@ const iconMap = {
 
 export function Contact() {
   return (
-    <section id="contact" className="relative scroll-mt-20 py-24 md:py-32">
-      <div className="mx-auto w-full max-w-6xl px-6">
-        <Reveal className="relative overflow-hidden rounded-[2rem] border border-border bg-card px-6 py-14 text-center md:px-16 md:py-20">
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div className="bg-grid absolute inset-0 opacity-60" />
-            <div className="absolute -bottom-64 left-1/2 h-[520px] w-[900px] -translate-x-1/2 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.25),transparent)]" />
-          </div>
+    <Section
+      id="contact"
+      index="06"
+      eyebrow="Contact"
+      specMeta="Direct dispatch · Ho Chi Minh City, Vietnam"
+      title={
+        <>
+          Open to backend and full-stack roles in fintech and product teams.{" "}
+          <span className="text-muted-foreground">
+            Available for opportunities or conversations about Java and distributed systems.
+          </span>
+        </>
+      }
+    >
+      {/* Dealt close-type: email set very large as the main link */}
+      <div className="border-t border-border pt-8">
+        <p className="font-mono text-[13px] text-muted-foreground">
+          Primary channel · Direct email
+        </p>
 
-          <div className="relative">
-            <p className="mb-4 flex items-center justify-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary">
-              <span className="text-muted-foreground">05</span>
-              <span className="h-px w-8 bg-primary/60" />
-              Contact
-            </p>
-
-            <h2 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-balance md:text-6xl">
-              Let&apos;s build something <span className="text-gradient">reliable</span> together.
-            </h2>
-
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              I&apos;m open to backend / full-stack roles in fintech and product teams. Whether it&apos;s
-              an opportunity or a chat about Java and distributed systems — my inbox is open.
-            </p>
-
-            <a
-              href={`mailto:${site.email}`}
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-medium text-primary-foreground shadow-xl shadow-primary/30 transition-all hover:shadow-primary/50"
-            >
-              <Mail className="h-5 w-5" />
+        <div className="mt-3 flex flex-wrap items-baseline justify-between gap-6">
+          <a
+            href={`mailto:${site.email}`}
+            className="group inline-flex flex-wrap items-center gap-3 text-[24px] font-medium leading-[1.15] tracking-[-0.03em] text-primary break-all sm:text-[36px] md:text-[48px]"
+          >
+            <span className="underline decoration-primary/40 decoration-2 underline-offset-8 transition-colors group-hover:decoration-primary">
               {site.email}
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </span>
+            <ArrowUpRight className="h-7 w-7 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 md:h-9 md:w-9" />
+          </a>
 
-            <div className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2 md:grid-cols-3">
-              {site.socials
-                .filter((s) => s.icon !== "mail")
-                .map((s) => (
-                  <ContactRow
-                    key={s.label}
-                    social={
-                      s.label === "Zalo"
-                        ? { ...s, href: "/images/zalo.png" }
-                        : s
-                    }
-                  />
-                ))}
-            </div>
-          </div>
-        </Reveal>
+          {site.resumeUrl && (
+            <a
+              href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="m-btn inline-flex h-11 items-center gap-2 rounded-[4px] border border-border bg-muted px-5 text-[15px] font-medium text-foreground hover:border-primary/50"
+            >
+              Download CV (PDF) <Download className="h-4 w-4" />
+            </a>
+          )}
+        </div>
       </div>
-    </section>
+
+      {/* Socials as one ruled editorial ledger list */}
+      <div className="mt-12">
+        <div className="mb-3 flex items-baseline justify-between font-mono text-[13px] text-muted-foreground">
+          <span className="font-medium text-foreground">
+            Directory & channels
+          </span>
+          <span>6 endpoints</span>
+        </div>
+
+        <div className="divide-y divide-border border-y border-border">
+          {site.socials.map((s) => (
+            <ContactRow
+              key={s.label}
+              social={
+                s.label === "Zalo" ? { ...s, href: "/images/zalo.png" } : s
+              }
+            />
+          ))}
+        </div>
+      </div>
+    </Section>
   );
 }
 
@@ -80,20 +102,22 @@ function ContactRow({ social }: { social: SocialLink }) {
       target={isZalo || external ? "_blank" : undefined}
       rel={isZalo || external ? "noopener noreferrer" : undefined}
       aria-label={isZalo ? "Open Zalo QR Code" : social.label}
-      className="group flex items-center gap-3 rounded-xl border border-border bg-background/80 p-3.5 transition-colors hover:border-primary/50"
+      className="group grid grid-cols-1 items-center gap-2 py-4 transition-colors hover:text-primary sm:grid-cols-12 sm:gap-4"
     >
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-        <Icon className="h-4 w-4" />
-      </span>
-
-      <span className="min-w-0">
-        <span className="block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+      <div className="flex items-center gap-3 sm:col-span-4">
+        <Icon className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+        <span className="font-mono text-[14px] font-medium text-foreground group-hover:text-primary">
           {social.label}
         </span>
-        <span className="block truncate text-sm font-medium">
-          {social.handle}
-        </span>
-      </span>
+      </div>
+
+      <div className="text-[16px] text-foreground/90 sm:col-span-7">
+        {social.handle}
+      </div>
+
+      <div className="hidden justify-end sm:col-span-1 sm:flex">
+        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+      </div>
     </a>
   );
 }

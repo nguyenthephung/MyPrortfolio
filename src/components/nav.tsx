@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileMenu } from "@/components/mobile-menu";
+import { site } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "#about", label: "About" },
+  { href: "#problems", label: "Architecture" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
@@ -15,14 +17,9 @@ const navItems = [
 ];
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
     const sections = navItems
       .map((i) => document.querySelector(i.href))
       .filter(Boolean) as Element[];
@@ -32,54 +29,63 @@ export function Nav() {
           if (e.isIntersecting) setActive(`#${e.target.id}`);
         });
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-40% 0px -50% 0px" }
     );
     sections.forEach((s) => io.observe(s));
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      io.disconnect();
-    };
+    return () => io.disconnect();
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 flex justify-center px-4 pt-4">
-      <div
-        className={cn(
-          "flex h-14 w-full max-w-6xl items-center justify-between rounded-full border px-4 transition-all duration-300 md:px-6",
-          scrolled
-            ? "glass border-border shadow-lg shadow-black/5"
-            : "border-transparent bg-transparent"
-        )}
-      >
-        <Link href="#top" className="group flex items-center gap-2" aria-label="Home">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-primary to-accent font-mono text-xs font-bold text-primary-foreground">
-            TP
-          </span>
-          <span className="hidden font-mono text-sm font-semibold tracking-tight sm:inline">
-            thephung<span className="text-primary">.</span>dev
+    <header className="fixed inset-x-0 top-0 z-40 h-14 border-b border-border bg-background md:h-[72px]">
+      <a className="skip-link" href="#top">
+        Skip to content
+      </a>
+      <div className="wrap flex h-full items-center justify-between gap-4">
+        <Link
+          href="#top"
+          className="inline-flex h-11 items-center gap-2.5 text-[19px] font-medium tracking-[-0.02em] text-foreground"
+        >
+          <span>{site.displayName}</span>
+          <span className="hidden border-l border-border pl-2.5 font-mono text-[13px] font-normal text-muted-foreground sm:inline">
+            thephung.dev
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "rounded-full px-4 py-1.5 text-sm transition-colors",
-                active === item.href
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {item.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+          {navItems.map((item) => {
+            const isCurrent = active === item.href;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "relative inline-flex h-11 items-center px-3.5 text-[15px] font-medium transition-colors",
+                  isCurrent
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {item.label}
+                {isCurrent && (
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-3.5 bottom-1.5 h-[2px] bg-primary"
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
+          <a
+            href="#contact"
+            className="m-btn hidden h-11 items-center justify-center rounded-[4px] bg-primary px-5 text-[15px] font-medium text-primary-foreground sm:inline-flex"
+          >
+            Email me
+          </a>
           <MobileMenu items={navItems} />
         </div>
       </div>
