@@ -1,17 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Familjen_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { site } from "@/lib/data/site";
 import "./globals.css";
 
+const familjen = Familjen_Grotesk({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600"],
+  variable: "--font-familjen",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://thephung.vercel.app"),
   title: {
-    default: `${site.name} — ${site.role} (${site.tagline})`,
-    template: `%s — ${site.name}`,
+    default: `${site.name}: ${site.role} (${site.tagline})`,
+    template: `%s · ${site.name}`,
   },
   description: site.bio,
+  alternates: {
+    canonical: "https://thephung.vercel.app",
+  },
   keywords: [
     "Nguyen The Phung",
     "Full Stack Software Engineer",
@@ -41,28 +57,65 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://thephung.vercel.app",
-    title: `${site.name} — ${site.role} (${site.tagline})`,
+    title: `${site.name}: ${site.role} (${site.tagline})`,
     description: site.bio,
-    siteName: `${site.name} — Portfolio`,
+    siteName: `${site.name} · Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role} (${site.tagline})`,
+    title: `${site.name}: ${site.role} (${site.tagline})`,
     description: site.bio,
   },
- icons: {
-  icon: [
-    { url: "/favicon.png", type: "image/png" },
-  ],
-  shortcut: "/favicon.png",
-  apple: "/favicon.png",
-},
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  other: {
+    "site-kind": "software",
+    "page-type": "software",
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#09090f" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  alternateName: site.displayName,
+  jobTitle: site.role,
+  description: site.bio,
+  url: site.portfolioUrl,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ho Chi Minh City",
+    addressCountry: "VN",
+  },
+  worksFor: {
+    "@type": "Organization",
+    name: "FPT Information System",
+    url: "https://fpt-is.com",
+  },
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "VNUHCM - University of Science",
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      name: "Université Claude Bernard Lyon 1",
+    },
+  ],
+  sameAs: [
+    "https://github.com/nguyenthephung",
+    "https://www.linkedin.com/in/th%E1%BB%83-ph%E1%BB%A5ng-nguy%E1%BB%85n-285107385/",
   ],
 };
 
@@ -74,14 +127,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-type="software"
+      data-radius="sharp"
+      data-ground="sage"
+      data-buttons="tonal"
+      data-motion=""
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${familjen.variable} ${plexMono.variable}`}
     >
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

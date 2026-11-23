@@ -1,152 +1,161 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Github, Scale } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
-import { Reveal } from "@/components/reveal";
 import { projects } from "@/lib/data/projects";
 import type { Project } from "@/lib/types";
-import { cn } from "@/lib/utils";
 
-const accentMap: Record<NonNullable<Project["accent"]>, string> = {
-  violet: "from-violet-500/30 via-fuchsia-500/10 to-transparent",
-  blue: "from-sky-500/30 via-blue-500/10 to-transparent",
-  emerald: "from-emerald-500/30 via-teal-500/10 to-transparent",
-  amber: "from-amber-500/30 via-orange-500/10 to-transparent",
-};
-
-export function Projects() {
-  const featured = projects.filter((p) => p.featured);
-  const others = projects.filter((p) => !p.featured);
-
+function JurisHubChatVisual() {
   return (
-    <Section
-      id="projects"
-      index="03"
-      eyebrow="Selected work"
-      title={
-        <>
-          Side projects where I <span className="text-gradient">explore new architectures.</span>
-        </>
-      }
-      description="From a RAG-powered legal assistant to a Kafka-driven rescue dispatcher — built outside work to go deeper on distributed systems and AI."
+    <div
+      role="img"
+      aria-label="JurisHub RAG legal assistant citing Vietnamese Civil Code Article 117 over an uploaded PDF contract"
+      className="flex h-full min-h-[300px] flex-col justify-between bg-muted p-4 sm:p-6"
     >
-      <div className="space-y-8">
-        {featured.map((p, i) => (
-          <FeaturedProject key={p.slug} project={p} reverse={i % 2 === 1} />
-        ))}
-      </div>
+      <div className="mx-auto flex w-full max-w-xl flex-1 flex-col justify-between rounded-[6px] border border-border bg-background shadow-xs">
+        {/* Window top bar */}
+        <div className="flex items-center justify-between border-b border-border bg-muted/60 px-3.5 py-2.5 font-mono text-[13px]">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-primary" />
+            <span className="font-medium text-foreground">
+              JurisHub · RAG Legal Consultation
+            </span>
+          </div>
+          <span className="text-muted-foreground">
+            FastAPI · LangChain · RabbitMQ
+          </span>
+        </div>
 
-      {others.length > 0 && (
-        <div className="mt-20">
-          <Reveal>
-            <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              More projects
-            </h3>
-          </Reveal>
-          <div className="grid gap-4 md:grid-cols-3">
-            {others.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 80} className="h-full">
-                <CompactProject project={p} />
-              </Reveal>
-            ))}
+        {/* Chat messages */}
+        <div className="space-y-3 p-4 text-[14px]">
+          <div className="flex items-center justify-between rounded-[4px] border border-border bg-muted/50 px-3 py-2 font-mono text-[13px]">
+            <span className="text-foreground">
+              Attachment: hop-dong-thue-nha-2026.pdf
+            </span>
+            <span className="text-primary">Indexed · 18 chunks</span>
+          </div>
+
+          <div className="rounded-[4px] border border-border bg-muted/30 p-3">
+            <div className="font-mono text-[13px] font-medium text-muted-foreground">
+              User query
+            </div>
+            <p className="mt-1 text-[15px] text-foreground">
+              Hợp đồng này có hợp lệ không nếu một bên chưa đủ năng lực hành vi dân sự?
+            </p>
+          </div>
+
+          <div className="rounded-[4px] border border-primary/35 bg-primary/6 p-3">
+            <div className="flex items-center justify-between font-mono text-[13px]">
+              <span className="font-medium text-primary">
+                RAG Assistant · Vietnamese Civil Code
+              </span>
+              <span className="text-muted-foreground">Citation verified</span>
+            </div>
+            <p className="mt-1.5 text-[15px] leading-[1.55] text-foreground">
+              Theo <strong>Điều 117 Bộ luật Dân sự 2015</strong>, giao dịch dân sự chỉ có hiệu lực khi chủ thể có năng lực pháp luật và năng lực hành vi dân sự phù hợp. Hợp đồng có thể bị tuyên vô hiệu theo Điều 125.
+            </p>
+            <div className="mt-2.5 flex flex-wrap gap-2 font-mono text-[13px] text-muted-foreground">
+              <span className="rounded-[4px] border border-border bg-background px-2 py-0.5 text-foreground">
+                Ref: Điều 117 BLDS 2015
+              </span>
+              <span className="rounded-[4px] border border-border bg-background px-2 py-0.5 text-foreground">
+                WebSocket / STOMP lawyer chat
+              </span>
+            </div>
           </div>
         </div>
-      )}
-    </Section>
+      </div>
+    </div>
   );
 }
 
 function ProjectCover({ project }: { project: Project }) {
   if (project.image) {
     return (
-      <Image
-        src={project.image}
-        alt={`${project.title} screenshot`}
-        fill
-        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-        sizes="(max-width: 1024px) 100vw, 55vw"
-      />
+      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[6px] border border-border bg-muted">
+        <Image
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          fill
+          className="m-zoom object-cover object-top"
+          sizes="(max-width: 1024px) 100vw, 56vw"
+        />
+      </div>
     );
   }
-  // Generated cover for projects without a screenshot
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-violet-950 via-indigo-950 to-slate-950 p-8 text-center">
-      <div className="bg-grid absolute inset-0 opacity-30 [mask-image:none]" />
-      <div className="relative grid h-16 w-16 place-items-center rounded-2xl bg-white/10 ring-1 ring-white/20">
-        <Scale className="h-8 w-8 text-violet-200" />
-      </div>
-      <p className="relative text-3xl font-semibold tracking-tight text-white">{project.title}</p>
-      <div className="relative w-full max-w-xs space-y-2 rounded-xl bg-white/5 p-3 text-left font-mono text-[11px] text-violet-100/80 ring-1 ring-white/10">
-        <p><span className="text-violet-300">user ›</span> Hợp đồng này có hợp lệ không?</p>
-        <p><span className="text-cyan-300">ai ›</span> Theo Điều 117 BLDS 2015…</p>
-      </div>
+    <div className="overflow-hidden rounded-[6px] border border-border">
+      <JurisHubChatVisual />
     </div>
   );
 }
 
-function FeaturedProject({ project, reverse }: { project: Project; reverse?: boolean }) {
+function FeaturedProject({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
   const href = project.links.demo || project.links.github || "#";
   return (
-    <Reveal
-      as="article"
-      className="glow-card group relative overflow-hidden rounded-3xl border border-border bg-card"
-    >
-      <div
-        aria-hidden
-        className={cn(
-          "pointer-events-none absolute -top-40 h-96 w-96 rounded-full bg-gradient-to-br opacity-60 [mask-image:radial-gradient(closest-side,#000,transparent)]",
-          reverse ? "-left-24" : "-right-24",
-          accentMap[project.accent ?? "violet"]
-        )}
-      />
-      <div className="relative grid lg:grid-cols-[1.15fr_1fr]">
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn("block min-w-0 p-3 lg:p-4", reverse && "lg:order-2")}
-          aria-label={`Open ${project.title}`}
-        >
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-muted lg:aspect-auto lg:h-full lg:min-h-[340px]">
-            <ProjectCover project={project} />
+    <article className="grid grid-cols-1 items-start gap-6 border-t border-border py-10 lg:grid-cols-12 lg:gap-8">
+      {/* Left column (5 cols): always text first, never zig-zagged (layout-v4 rule) */}
+      <div className="flex flex-col justify-between lg:col-span-5">
+        <div>
+          <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[13px] text-muted-foreground tabular-nums">
+            <span>
+              CASE 04.{index + 1} · {project.period}
+            </span>
+            <span>
+              {project.role}
+              {project.team ? ` · ${project.team}` : ""}
+            </span>
           </div>
-        </a>
 
-        <div className={cn("flex min-w-0 flex-col p-6 md:p-8 lg:py-10", reverse && "lg:order-1")}>
-          <p className="font-mono text-xs text-muted-foreground">
-            {project.period} · {project.role}
-            {project.team ? ` · ${project.team}` : ""}
+          <h3 className="mt-2.5 text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-foreground md:text-[28px]">
+            {project.title}
+          </h3>
+          <p className="mt-1 font-mono text-[13px] font-medium text-primary">
+            {project.subtitle}
           </p>
-          <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">{project.title}</h3>
-          <p className="text-sm font-medium text-primary">{project.subtitle}</p>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+
+          <p className="mt-3.5 text-[16px] leading-[1.6] text-foreground/90">
             {project.summary}
           </p>
 
           {project.bullets && (
             <ul className="mt-4 space-y-2">
               {project.bullets.map((b, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-foreground/85">
-                  <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                  {b}
+                <li
+                  key={i}
+                  className="grid grid-cols-[16px_1fr] items-baseline text-[15px] leading-[1.6] text-muted-foreground"
+                >
+                  <span aria-hidden className="font-mono text-[13px] text-primary">
+                    —
+                  </span>
+                  <span>{b}</span>
                 </li>
               ))}
             </ul>
           )}
+        </div>
 
-          <div className="mt-5 flex flex-wrap gap-1.5">
-            {project.tech.map((t) => (
-              <Badge key={t}>{t}</Badge>
-            ))}
-          </div>
+        <div className="mt-5 border-t border-border pt-4">
+          <p className="font-mono text-[13px] text-muted-foreground">
+            <span className="font-medium text-foreground">Stack: </span>
+            {project.tech.join(" · ")}
+          </p>
 
-          <div className="mt-auto flex flex-wrap items-center gap-3 pt-6">
+          <div className="mt-4 flex flex-wrap items-center gap-2.5">
             {project.links.demo && (
               <a
                 href={project.links.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-85"
+                className="m-btn inline-flex h-11 items-center gap-2 rounded-[4px] bg-primary px-5 text-[15px] font-medium text-primary-foreground"
               >
                 Live demo <ArrowUpRight className="h-4 w-4" />
               </a>
@@ -156,7 +165,7 @@ function FeaturedProject({ project, reverse }: { project: Project; reverse?: boo
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="m-btn inline-flex h-11 items-center gap-2 rounded-[4px] border border-border bg-muted/60 px-4 text-[15px] font-medium text-foreground hover:border-primary/50"
               >
                 <Github className="h-4 w-4" /> Source
               </a>
@@ -164,39 +173,154 @@ function FeaturedProject({ project, reverse }: { project: Project; reverse?: boo
           </div>
         </div>
       </div>
-    </Reveal>
+
+      {/* Right column (7 cols): screenshot or live UI fragment */}
+      <div className="lg:col-span-7">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block"
+          aria-label={`Open ${project.title}`}
+        >
+          <ProjectCover project={project} />
+        </a>
+      </div>
+    </article>
   );
 }
 
-function CompactProject({ project }: { project: Project }) {
-  const href = project.links.demo || project.links.github || "#";
+export function Projects() {
+  const featured = projects.filter((p) => p.featured);
+  const others = projects.filter((p) => !p.featured);
+  const [hoveredSlug, setHoveredSlug] = useState<string>(
+    others[0]?.slug ?? ""
+  );
+
+  const previewProject =
+    others.find((p) => p.slug === hoveredSlug) ?? others[0];
+
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="glow-card group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-transform duration-300 hover:-translate-y-1"
+    <Section
+      id="projects"
+      index="04"
+      eyebrow="Selected work"
+      specMeta="3 case studies · 3 archive builds"
+      title={
+        <>
+          Side projects where I explore new architectures.{" "}
+          <span className="text-muted-foreground">
+            From a RAG legal assistant to a Kafka-driven emergency rescue dispatcher.
+          </span>
+        </>
+      }
     >
-      {project.image && (
-        <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-muted">
-          <ProjectCover project={project} />
+      <div>
+        {featured.map((p, i) => (
+          <FeaturedProject key={p.slug} project={p} index={i} />
+        ))}
+      </div>
+
+      {others.length > 0 && (
+        <div className="mt-10 border-t border-border pt-10">
+          <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2 font-mono text-[13px] text-muted-foreground">
+            <span className="font-medium text-foreground">
+              §04.4 · Archive & earlier engineering builds
+            </span>
+            <span>Hover or select a row to inspect</span>
+          </div>
+
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+            {/* Ruled archive index table */}
+            <div className="divide-y divide-border border-y border-border lg:col-span-8">
+              {others.map((p) => {
+                const isSelected = previewProject?.slug === p.slug;
+                return (
+                  <div
+                    key={p.slug}
+                    onMouseEnter={() => setHoveredSlug(p.slug)}
+                    className={`m-lift py-5 transition-colors ${
+                      isSelected ? "bg-muted/40 px-3 -mx-3 rounded-[4px]" : ""
+                    }`}
+                  >
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <div className="flex flex-wrap items-baseline gap-2.5">
+                        <h4 className="text-[19px] font-medium text-foreground">
+                          {p.title}
+                        </h4>
+                        <span className="font-mono text-[13px] text-primary">
+                          {p.subtitle}
+                        </span>
+                      </div>
+                      <span className="font-mono text-[13px] text-muted-foreground tabular-nums">
+                        {p.period} · {p.role}
+                      </span>
+                    </div>
+
+                    <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">
+                      {p.summary}
+                    </p>
+
+                    <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+                      <span className="font-mono text-[13px] text-foreground/80">
+                        {p.tech.join(" · ")}
+                      </span>
+
+                      <div className="flex items-center gap-3 font-mono text-[13px]">
+                        {p.links.demo && (
+                          <a
+                            href={p.links.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex h-9 items-center gap-1 rounded-[4px] bg-primary/10 px-3 font-medium text-primary hover:bg-primary/18"
+                          >
+                            Live demo <ArrowUpRight className="h-3.5 w-3.5" />
+                          </a>
+                        )}
+                        {p.links.github && (
+                          <a
+                            href={p.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex h-9 items-center gap-1 rounded-[4px] border border-border px-3 font-medium text-foreground hover:border-primary/50"
+                          >
+                            <Github className="h-3.5 w-3.5" /> Source
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Thumbnail preview panel on desktop */}
+            {previewProject && previewProject.image && (
+              <div className="hidden lg:col-span-4 lg:block">
+                <div className="overflow-hidden rounded-[6px] border border-border bg-muted">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <Image
+                      src={previewProject.image}
+                      alt={`${previewProject.title} preview`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="380px"
+                    />
+                  </div>
+                  <div className="border-t border-border bg-background px-3.5 py-2.5 font-mono text-[13px]">
+                    <div className="font-medium text-foreground">
+                      {previewProject.title}
+                    </div>
+                    <div className="text-muted-foreground">
+                      {previewProject.subtitle}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between gap-2">
-          <h4 className="font-semibold tracking-tight">{project.title}</h4>
-          <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-        </div>
-        <p className="font-mono text-[11px] text-muted-foreground">
-          {project.subtitle} · {project.period}
-        </p>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{project.summary}</p>
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.tech.slice(0, 4).map((t) => (
-            <Badge key={t}>{t}</Badge>
-          ))}
-        </div>
-      </div>
-    </a>
+    </Section>
   );
 }

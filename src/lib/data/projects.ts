@@ -43,7 +43,7 @@ export const projects: Project[] = [
     summary:
       "Microservice-based emergency response platform for SOS intake, responder coordination and real-time dispatch tracking.",
     bullets: [
-      "Spring Boot 3 microservices with Kafka as the event bus — SOS submissions and status updates propagate asynchronously without service coupling.",
+      "Spring Boot 3 microservices with Kafka as the event bus: SOS submissions and status updates propagate asynchronously without service coupling.",
       "Priority classification and shortest-path routing over a road-network model to dispatch the fastest available team.",
       "Redis Geo indexes responder locations; WebSocket streams live positions to citizen and dispatcher dashboards.",
     ],

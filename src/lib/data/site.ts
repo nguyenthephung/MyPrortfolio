@@ -13,14 +13,14 @@ export const site: SiteConfig = {
   resumeUrl: "/Nguyen_The_Phung_Resume.pdf",
   bio: "I build reliable, high-concurrency banking systems. 1.5+ years shipping production features on Eximbank's Teller Platform at FPT Information System, with Java, Spring Boot 3, Kafka, Redis and Angular micro-frontends.",
   about: [
-    "I'm a Full Stack Software Engineer at FPT Information System, where I went from intern to full-time engineer delivering production banking software for Eximbank. Day to day I work across a 14-service Spring Boot 3 platform and Angular Nx micro-frontends, owning features end to end — from the Oracle schema to the UI.",
+    "I'm a Full Stack Software Engineer at FPT Information System, where I went from intern to full-time engineer delivering production banking software for Eximbank. Day to day I work across a 14-service Spring Boot 3 platform and Angular Nx micro-frontends, owning features end to end, from the Oracle schema to the UI.",
     "The problems I enjoy most sit where money moves: idempotent fund transfers, maker-checker approvals that stay correct under concurrent clicks, and event-driven notification pipelines that don't lose messages. I care about systems that fail safely and are easy to reason about.",
     "My foundation comes from a Vietnam–France dual degree in Computer Science (VNUHCM – University of Science) and System Engineering (Université Claude Bernard Lyon 1).",
   ],
   focus: [
-    "Transaction safety — idempotency, concurrency control, reconciliation",
+    "Transaction safety: idempotency, concurrency control, reconciliation",
     "Event-driven architecture with Kafka & RabbitMQ",
-    "Secure APIs — ES256 JWT, RBAC, OWASP remediation",
+    "Secure APIs: ES256 JWT, RBAC, OWASP remediation",
     "Micro-frontends with Angular Nx & Module Federation",
   ],
   stats: [

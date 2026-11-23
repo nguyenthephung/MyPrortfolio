@@ -15,6 +15,8 @@ const eslintConfig = [
     ignores: [
       "node_modules/**",
       ".next/**",
+      ".agents/**",
+      ".taste-skill/**",
       "out/**",
       "build/**",
       "next-env.d.ts",

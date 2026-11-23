@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
-import { Reveal } from "@/components/reveal";
 
 export function Section({
   id,
   index,
   eyebrow,
+  specMeta,
   title,
   description,
   children,
@@ -13,31 +13,42 @@ export function Section({
   id?: string;
   index?: string;
   eyebrow?: string;
+  specMeta?: string;
   title: React.ReactNode;
   description?: string;
   children: React.ReactNode;
   className?: string;
 }) {
   return (
-    <section id={id} className={cn("relative scroll-mt-20 py-24 md:py-32", className)}>
-      <div className="mx-auto w-full max-w-6xl px-6">
-        <Reveal className="mb-12 md:mb-16">
-          {eyebrow && (
-            <p className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary">
-              {index && <span className="text-muted-foreground">{index}</span>}
-              <span className="h-px w-8 bg-primary/60" />
-              {eyebrow}
-            </p>
-          )}
-          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-balance md:text-5xl">
+    <section
+      id={id}
+      className={cn(
+        "relative border-t border-border py-16 md:py-24",
+        className
+      )}
+    >
+      <div className="wrap">
+        {(eyebrow || index || specMeta) && (
+          <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4 border-b border-border pb-3 font-mono text-[13px] text-muted-foreground tabular-nums">
+            <div className="flex items-center gap-3">
+              {index && <span className="font-medium text-foreground">§{index}</span>}
+              {eyebrow && <span className="text-foreground">{eyebrow}</span>}
+            </div>
+            {specMeta && <span>{specMeta}</span>}
+          </div>
+        )}
+
+        <div className="mb-10 md:mb-12">
+          <h2 className="max-w-4xl text-[30px] font-normal leading-[1.08] tracking-[-0.03em] text-foreground md:text-[44px]">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="mt-3 max-w-[62ch] text-[16px] leading-[1.6] text-muted-foreground md:text-[18px]">
               {description}
             </p>
           )}
-        </Reveal>
+        </div>
+
         {children}
       </div>
     </section>

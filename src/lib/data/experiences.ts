@@ -3,28 +3,48 @@ import type { Experience, Highlight } from "@/lib/types";
 /** Engineering highlights — the problems I'm proudest of solving. */
 export const highlights: Highlight[] = [
   {
-    title: "Idempotent fund transfers",
+    title: "Idempotent fund transfers & two-phase DB split",
     description:
-      "Duplicate submissions are neutralised with idempotency keys; ambiguous core-banking timeouts move to a pending-verify state and get reconciled — never blindly retried.",
-    tags: ["Idempotency", "Reconciliation", "Oracle"],
+      "Write-ahead TX1 commits transfer(PROCESSING) and outbox_event with an Oracle unique constraint on (user_id, idem_key), releasing the DB connection before the 300ms Core ESB call; TX2 records the final state and outbox events.",
+    tags: [
+      "ULID / externalRef",
+      "Write-ahead TX1/TX2",
+      "FOR UPDATE SKIP LOCKED",
+      "Oracle",
+    ],
   },
   {
-    title: "Race-safe maker-checker",
+    title: "Timeout resilience & T+0 reconciliation",
     description:
-      "Approval workflow enforcing maker ≠ checker separation with concurrency control, so simultaneous approvals always resolve to exactly one outcome.",
-    tags: ["Concurrency", "State machine", "RBAC"],
+      "Resilience4j CircuitBreaker and Bulkhead return 503 only when a request was definitely not sent; network timeouts transition to PENDING_VERIFY (HTTP 202) for multi-instance SKIP LOCKED inquiry plus T+0 Spring Batch matching.",
+    tags: [
+      "Resilience4j",
+      "PENDING_VERIFY (202)",
+      "SKIP LOCKED Reconciler",
+      "Spring Batch T+0",
+    ],
   },
   {
-    title: "Event-driven notifications",
+    title: "Transactional outbox, Kafka fan-out & hash-chain audit",
     description:
-      "Kafka pipeline fanning out to email, SMS, push and WebSocket with an independent consumer per channel, plus a trace-ID-linked audit trail.",
-    tags: ["Kafka", "WebSocket", "Audit trail"],
+      "Transactional outbox decouples the sync money path from async Kafka consumers (key = transferId to prevent merchant hot partitions): 4 isolated notification channels with user_inbox fallback and SHA-256 hash-chained WORM audit logs.",
+    tags: [
+      "Transactional Outbox",
+      "Kafka (@RetryableTopic)",
+      "user_inbox + WebSocket",
+      "SHA-256 WORM Audit",
+    ],
   },
   {
-    title: "Micro-frontend migration",
+    title: "Race-safe maker-checker & 11-remote micro-frontends",
     description:
-      "Moved legacy Liferay/JSP screens to Angular Module Federation and contributed to a shared UI library reused across 11 micro-frontends.",
-    tags: ["Angular Nx", "Module Federation", "PII masking"],
+      "High-value branch transfers enforce maker ≠ checker RBAC with Redisson approval:{id} locks and @Version CAS so concurrent clicks resolve once, served across 11 Angular Nx Module Federation remotes with PII log masking.",
+    tags: [
+      "Maker ≠ Checker",
+      "Redisson + @Version",
+      "Angular Nx (11 MFs)",
+      "PII Masking",
+    ],
   },
 ];
 
@@ -41,7 +61,7 @@ export const experiences: Experience[] = [
         period: "Dec 2025 – Sep 2026",
         location: "Ho Chi Minh City",
         summary:
-          "Developer in an 11-person dev team (7 engineers, 4 leads) alongside PM, BA, QC and design — owning features end to end with lead-reviewed merges across a 14-service Spring Boot 3 platform and Angular Nx micro-frontends.",
+          "Developer in an 11-person dev team (7 engineers, 4 leads) alongside PM, BA, QC and design, owning features end to end with lead-reviewed merges across a 14-service Spring Boot 3 platform and Angular Nx micro-frontends.",
         bullets: [
           {
             label: "Secure APIs",
@@ -53,7 +73,7 @@ export const experiences: Experience[] = [
           },
           {
             label: "Fund transfer",
-            text: "Co-owned the transfer module across multiple transfer types — idempotency keys for duplicate submissions, a pending-verify state and reconciliation for core-banking timeouts.",
+            text: "Co-owned the transfer module across multiple transfer types: idempotency keys for duplicate submissions, a pending-verify state and reconciliation for core-banking timeouts.",
           },
           {
             label: "Notification & audit",
@@ -89,7 +109,7 @@ export const experiences: Experience[] = [
           },
           {
             label: "Security",
-            text: "Remediated 100+ static-analysis findings — resource leaks, SQL injection, XSS, log forging and more — re-scanning until clean.",
+            text: "Remediated 100+ static-analysis findings (resource leaks, SQL injection, XSS, log forging and more), re-scanning until clean.",
           },
         ],
         tech: ["Java", "Spring Boot", "Angular", "OWASP", "Static analysis"],
