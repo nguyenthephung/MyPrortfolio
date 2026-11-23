@@ -8,7 +8,7 @@ export const site: SiteConfig = {
   location: "District 7, Ho Chi Minh City, Vietnam",
   email: "nguyenthephung61@gmail.com",
   phone: "+84 867 951 141",
-  avatarSrc: "/images/myAvatart.jpeg",
+  avatarSrc: "/images/myAvatart.jpg",
   portfolioUrl: "https://thephung.vercel.app",
   resumeUrl: "/Nguyen_The_Phung_Resume.pdf",
   bio: "I build reliable, high-concurrency banking systems. 1.5+ years shipping production features on Eximbank's Teller Platform at FPT Information System, with Java, Spring Boot 3, Kafka, Redis and Angular micro-frontends.",
